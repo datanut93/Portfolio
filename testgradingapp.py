@@ -22,8 +22,8 @@ def analyze_answer(prompt, example_answer):
     }
 
     data = {
-        'prompt': f'{prompt}\n\nExample Answer: {example_answer}\n\nGrade and give feedback on the example answer:',
-        'max_tokens': 1000,
+        'prompt': f'{prompt}\n\nExample Answer: {example_answer}\n\nPlease provide feedback on the example answer including spelling and grammar, and assign a grade from 1-100:',
+        'max_tokens': 3900,
         'temperature': 0.7,
         'n': 1,
         'stop': None,
@@ -33,13 +33,11 @@ def analyze_answer(prompt, example_answer):
 
     response = requests.post(OPENAI_API_URL, headers=headers, json=data)
 
-    # If the request was successful, process the response
     if response.status_code == 200:
         response_data = response.json()
         generated_feedback = response_data['choices'][0]['text'].strip()
         return generated_feedback
     else:
-        # If the request failed, return an error message
         return f"Error: {response.status_code}, {response.json()}"
 
 
