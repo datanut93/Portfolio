@@ -21,15 +21,15 @@ def analyze_answer(prompt, example_answer):
         'Authorization': f'Bearer {OPENAI_API_KEY}'
     }
 
-    data = {
-        'prompt': f'{prompt}\n\nExample Answer: {example_answer}',
-        'max_tokens': 10000,
-        'temperature': 0.7,
-        'n': 1,
-        'stop': None,
-        'frequency_penalty': 0.0,
-        'presence_penalty': 0.0
-    }
+data = {
+    'prompt': f'{prompt}\n\nExample Answer: {example_answer}',
+    'max_tokens': 4096,  # Reduced to fit within the model's maximum context length
+    'temperature': 0.7,
+    'n': 1,
+    'stop': None,
+    'frequency_penalty': 0.0,
+    'presence_penalty': 0.0
+}
 
     response = requests.post(OPENAI_API_URL, headers=headers, json=data)
 
