@@ -21,7 +21,6 @@ def analyze_answer(prompt, example_answer):
         'Authorization': f'Bearer {OPENAI_API_KEY}'
     }
 
-    # Modified prompt to ask the AI for grading the answer.
     data = {
         'prompt': f'{prompt}\n\nExample Answer: {example_answer}\n\nGrade and give feedback on the example answer:',
         'max_tokens': 3950,
@@ -33,11 +32,16 @@ def analyze_answer(prompt, example_answer):
     }
 
     response = requests.post(OPENAI_API_URL, headers=headers, json=data)
-    response_data = response.json()
-    
-    generated_feedback = response_data['choices'][0]['text'].strip()
-    
-    return generated_feedback
+
+    # If the request was successful, process the response
+    if response.status_code == 200:
+        response_data = response.json()
+        generated_feedback = response_data['choices'][0]['text'].strip()
+        return generated_feedback
+    else:
+        # If the request failed, return an error message
+        return f"Error: {response.status_code}, {response.json()}"
+
 
 def perform_grading(generated_feedback):
     # Implement your grading logic here
