@@ -23,7 +23,7 @@ def analyze_answer(prompt, example_answer):
 
     data = {
         'prompt': f'{prompt}\n\nExample Answer: {example_answer}\n\nGrade and give feedback on the example answer:',
-        'max_tokens': 3950,
+        'max_tokens': 1000,
         'temperature': 0.7,
         'n': 1,
         'stop': None,
