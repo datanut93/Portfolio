@@ -23,7 +23,7 @@ def analyze_answer(prompt, example_answer):
 
     data = {
         'prompt': f'{prompt}\n\nExample Answer: {example_answer}\n\nPlease provide feedback on the example answer including spelling and grammar, and assign a grade from 1-100:',
-        'max_tokens': 3900,
+        'max_tokens': 1000,
         'temperature': 0.7,
         'n': 1,
         'stop': None,
