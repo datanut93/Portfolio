@@ -21,30 +21,23 @@ def analyze_answer(prompt, example_answer):
         'Authorization': f'Bearer {OPENAI_API_KEY}'
     }
 
+    # Modified prompt to ask the AI for grading the answer.
     data = {
-    'prompt': f'{prompt}\n\nExample Answer: {example_answer}',
-    'max_tokens': 3950,  # Adjusted to accommodate the length of the prompt
-    'temperature': 0.7,
-    'n': 1,
-    'stop': None,
-    'frequency_penalty': 0.0,
-    'presence_penalty': 0.0
+        'prompt': f'{prompt}\n\nExample Answer: {example_answer}\n\nGrade and give feedback on the example answer:',
+        'max_tokens': 3950,
+        'temperature': 0.7,
+        'n': 1,
+        'stop': None,
+        'frequency_penalty': 0.0,
+        'presence_penalty': 0.0
     }
 
     response = requests.post(OPENAI_API_URL, headers=headers, json=data)
-
-    if response.status_code == 200:
-        response_data = response.json()
-        st.write(response_data)  # For debugging, remove this line once the issue is resolved
-
-        generated_feedback = response_data['choices'][0]['text'].strip()
-        grade = perform_grading(generated_feedback)
-        
-        feedback = f"Generated Feedback: {generated_feedback}\nGrade: {grade}"
-        return feedback
-    else:
-        st.write(f"Error: {response.status_code}, {response.text}")  # Print the error code and message
-        return "Error in API request"
+    response_data = response.json()
+    
+    generated_feedback = response_data['choices'][0]['text'].strip()
+    
+    return generated_feedback
 
 def perform_grading(generated_feedback):
     # Implement your grading logic here
