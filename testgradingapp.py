@@ -1,7 +1,7 @@
 import streamlit as st
 import requests
 
-OPENAI_API_KEY = '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'
+OPENAI_API_KEY = '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'
 OPENAI_API_URL = 'https://api.openai.com/v1/engines/davinci-codex/completions'
 
 def main():
