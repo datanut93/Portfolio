@@ -23,7 +23,7 @@ def analyze_answer(prompt, example_answer):
 
     data = {
     'prompt': f'{prompt}\n\nExample Answer: {example_answer}',
-    'max_tokens': 4096,  # Reduced to fit within the model's maximum context length
+    'max_tokens': 3950,  # Adjusted to accommodate the length of the prompt
     'temperature': 0.7,
     'n': 1,
     'stop': None,
