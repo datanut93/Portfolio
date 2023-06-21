@@ -22,7 +22,7 @@ def analyze_answer(prompt, example_answer):
     }
 
     data = {
-        'prompt': f'{prompt}\n\nExample Answer: {example_answer}\n\nPlease provide feedback on the example answer including spelling and grammar, and assign a grade from 1-100:',
+        'prompt': f'{prompt}\n\nExample Answer: {example_answer}\n\nAct as an exam proctor, judging aherance to the prompt and grading guide, you will provide academic grading feedback on the example answer on how well they met the prompt guidelines. In addition provide feedback on their spelling and grammar, and assign a grade from 1-100 based off your feedback on their adherance to the prompt and grading guidelines:',
         'max_tokens': 1000,
         'temperature': 0.7,
         'n': 1,
