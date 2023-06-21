@@ -1,4 +1,3 @@
-
 import streamlit as st
 import requests
 
@@ -32,13 +31,19 @@ def analyze_answer(prompt, example_answer):
     }
 
     response = requests.post(OPENAI_API_URL, headers=headers, json=data)
-    response_data = response.json()
-    
-    generated_feedback = response_data['choices'][0]['text']['content'].strip()
-    grade = perform_grading(generated_feedback)
-    
-    feedback = f"Generated Feedback: {generated_feedback}\nGrade: {grade}"
-    return feedback
+
+    if response.status_code == 200:
+        response_data = response.json()
+        st.write(response_data)  # For debugging, remove this line once the issue is resolved
+
+        generated_feedback = response_data['choices'][0]['text']['content'].strip()
+        grade = perform_grading(generated_feedback)
+        
+        feedback = f"Generated Feedback: {generated_feedback}\nGrade: {grade}"
+        return feedback
+    else:
+        st.write(f"Error: {response.status_code}, {response.text}")  # Print the error code and message
+        return "Error in API request"
 
 def perform_grading(generated_feedback):
     # Implement your grading logic here
