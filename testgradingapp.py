@@ -1,3 +1,4 @@
+
 import streamlit as st
 import requests
 
@@ -9,7 +10,7 @@ def main():
 
     prompt = st.text_area("Enter the prompt:")
     example_answer = st.text_area("Enter the example answer:")
-    
+
     if st.button("Analyze"):
         feedback = analyze_answer(prompt, example_answer)
         st.write(feedback)
@@ -33,7 +34,7 @@ def analyze_answer(prompt, example_answer):
     response = requests.post(OPENAI_API_URL, headers=headers, json=data)
     response_data = response.json()
     
-    generated_feedback = response_data['choices'][0]['text'].strip()
+    generated_feedback = response_data['choices'][0]['text']['content'].strip()
     grade = perform_grading(generated_feedback)
     
     feedback = f"Generated Feedback: {generated_feedback}\nGrade: {grade}"
