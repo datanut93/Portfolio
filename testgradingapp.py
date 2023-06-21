@@ -21,7 +21,7 @@ def analyze_answer(prompt, example_answer):
         'Authorization': f'Bearer {OPENAI_API_KEY}'
     }
 
-data = {
+    data = {
     'prompt': f'{prompt}\n\nExample Answer: {example_answer}',
     'max_tokens': 4096,  # Reduced to fit within the model's maximum context length
     'temperature': 0.7,
