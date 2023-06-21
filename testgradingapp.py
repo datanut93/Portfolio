@@ -37,7 +37,7 @@ def analyze_answer(prompt, example_answer):
         response_data = response.json()
         st.write(response_data)  # For debugging, remove this line once the issue is resolved
 
-        generated_feedback = response_data['choices'][0]['message']['content'].strip()
+        generated_feedback = response_data['choices'][0]['text'].strip()
         grade = perform_grading(generated_feedback)
         
         feedback = f"Generated Feedback: {generated_feedback}\nGrade: {grade}"
