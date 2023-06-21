@@ -29,7 +29,7 @@ data = {
     'stop': None,
     'frequency_penalty': 0.0,
     'presence_penalty': 0.0
-}
+    }
 
     response = requests.post(OPENAI_API_URL, headers=headers, json=data)
 
