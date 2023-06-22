@@ -22,7 +22,7 @@ def analyze_answer(prompt, example_answer):
     }
 
     data = {
-        'prompt': f'{prompt}\n\nExample Answer: {example_answer}\n\nYou are acting as a tough high school english teacher grading essays. The example_answer provided is the student essay. First compare what your high scoring response would be to the example answer to help determine what you grade the students example answer. Ensuring their adherance to the prompt and answering all parts of the question should be critical in determing the example answers grade on a scale of 1-100:',
+        'prompt': f'{prompt}\n\nExample Answer: {example_answer}\n\nYou are acting as my personal tutor. I am writing an essay based off the provided prompt and grading criteria. Ensuring my adherance to the prompt and make sure I answer all parts of the question to give me a grade on a scale of 1-100:',
         'max_tokens': 1000,
         'temperature': 0.7,
         'n': 1,
