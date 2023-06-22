@@ -22,7 +22,7 @@ def analyze_answer(prompt, example_answer):
     }
 
     data = {
-        'prompt': f'{prompt}\n\nExample Answer: {example_answer}\n\nWrite an essay in which you explain how the author builds an argument to persuade the audience. Analyze how the author uses evidence, reasoning, and stylistic or persuasive elements to strengthen the logic and persuasiveness of the argument. Be sure to provide a thorough and fair critique of the response to help improve the writing. Rate the response on a scale of 1-100:',
+        'prompt': f'{prompt}\n\nExample Answer: {example_answer}\n\nYou are acting as my personal tutor. My goal is to judge how well I have written an essay based on the prompt. I have provided my answer, and I want you to grade it based on the provided prompt and grading criteria. Provide a thorough and fair critique of my response, focusing on adherence to the prompt, addressing all parts of the question, and providing a grade on a scale of 1-100:',
         'max_tokens': 1000,
         'temperature': 0.7,
         'n': 1,
