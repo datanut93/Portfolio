@@ -51,3 +51,5 @@ def perform_grading(generated_response, example_answer):
         grade = 100
     return grade
 
+if __name__ == '__main__':
+    main()
