@@ -40,7 +40,6 @@ def analyze_answer(prompt, example_answer):
     else:
         return f"Error: {response.status_code}, {response.json()}"
 
-
 def perform_grading(generated_feedback):
     # Implement your grading logic here
     grade = 'A'  # Replace with your grading logic
