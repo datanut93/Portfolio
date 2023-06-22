@@ -22,7 +22,7 @@ def analyze_answer(prompt, example_answer):
     }
 
     data = {
-        'prompt': f'{prompt}\n\nExample Answer: {example_answer}\n\nYou are acting as my personal tutor. I am writing an essay based off the provided prompt and grading criteria. Ensuring my adherance to the prompt and make sure I answer all parts of the question to give me a grade on a scale of 1-100:',
+        'prompt': f'{prompt}\n\nExample Answer: {example_answer}\n\nYou are acting as my personal tutor. My goal is to judge how well I have written an essay based off of a prompt. I have provided my answer which I want you to grade based off the provided prompt and grading criteria. Ensuring my adherance to the prompt and make sure I answer all parts of the question to give me a grade on a scale of 1-100:',
         'max_tokens': 1000,
         'temperature': 0.7,
         'n': 1,
