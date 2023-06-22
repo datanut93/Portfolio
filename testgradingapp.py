@@ -14,7 +14,7 @@ def main():
     if st.button("Analyze"):
         feedback = analyze_answer(prompt, example_answer)
         st.write(feedback)
-
+        
 def analyze_answer(prompt, example_answer):
     headers = {
         'Content-Type': 'application/json',
@@ -22,7 +22,7 @@ def analyze_answer(prompt, example_answer):
     }
 
     data = {
-        'prompt': f'{prompt}\n\nExample Answer: {example_answer}\n\nYou are acting as my personal tutor. My goal is to judge how well I have written an essay based on the prompt. I have provided my answer, and I want you to grade it based on the provided prompt and grading criteria. Provide a thorough and fair critique of my response, focusing on adherence to the prompt, addressing all parts of the question, and providing a grade on a scale of 1-100:',
+        'prompt': f'{prompt}\n\nYou are acting as my personal tutor. My goal is to judge how well I have written an essay based on the prompt. I have provided my answer, and I want you to compare it to the example answer and provide a grade on a scale of 1-100:',
         'max_tokens': 1000,
         'temperature': 0.7,
         'n': 1,
@@ -35,15 +35,19 @@ def analyze_answer(prompt, example_answer):
 
     if response.status_code == 200:
         response_data = response.json()
-        generated_feedback = response_data['choices'][0]['text'].strip()
-        return generated_feedback
+        generated_response = response_data['choices'][0]['text'].strip()
+        grade = perform_grading(generated_response, example_answer)
+        return grade
     else:
         return f"Error: {response.status_code}, {response.json()}"
 
-def perform_grading(generated_feedback):
-    # Implement your grading logic here
-    grade = 'A'  # Replace with your grading logic
+
+def perform_grading(generated_response, example_answer):
+    # Implement your grading logic here by comparing the generated response with the example answer
+    # and providing a grade on a scale of 1-100 based on the evaluation
+    # Replace the code below with your own grading logic
+    grade = 0
+    if generated_response == example_answer:
+        grade = 100
     return grade
 
-if __name__ == '__main__':
-    main()
