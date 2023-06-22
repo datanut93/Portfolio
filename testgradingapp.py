@@ -22,7 +22,7 @@ def analyze_answer(prompt, example_answer):
     }
 
     data = {
-        'prompt': f'As you read the passage below, consider how the author uses evidence, reasoning, and stylistic or persuasive elements to support claims and strengthen the logic and persuasiveness of the argument.\n\n{prompt}\n\nExample Answer: {example_answer}\n\nWrite an analysis of how the author builds the argument and evaluates the provided features. Focus on providing a thorough and fair critique of the response to help improve the writing. Rate the response on a scale of 1-100:',
+        'prompt': f'{prompt}\n\nExample Answer: {example_answer}\n\nWrite an essay in which you explain how the author builds an argument to persuade the audience. Analyze how the author uses evidence, reasoning, and stylistic or persuasive elements to strengthen the logic and persuasiveness of the argument. Be sure to provide a thorough and fair critique of the response to help improve the writing. Rate the response on a scale of 1-100:',
         'max_tokens': 1000,
         'temperature': 0.7,
         'n': 1,
